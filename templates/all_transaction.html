@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block  title %}
+    <title>Easy Bank | Transaction Details</title>
+{% endblock title %}
+
+{% block content %}
+<br>
+
+    <h2 align="center">Transaction Details</h2><br>
+
+    <table class="table table-hover table-dark  my-5 mb-5 pb-5">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name Of Sender</th>
+                <th>Name Of Receiver</th>
+                <th>Transaction Amount</th>
+                <th>Sender Update Ballance</th>
+                <th>Receiver Updated Ballance</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in user %}
+            <tr align="center">
+                <td>{{i.Name_Of_Sender}}</td>
+                <td>{{i.Name_Of_Receiver}}</td>
+                <td>{{i.Transfer_Amount}}</td>
+                <td>{{i.Sender_Updated_Balance}}</td>
+                <td>{{i.Receiver_Updated_Balance}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <hr /><br>
+        
+        <section class="pagination justify-content-end">
+                <a class="page-link" href="?pg=1">Previous</a>
+            {% if user.has_previous %}
+                <a class="page-link" href="?pg={{ user.previous_page_number }}">{{ user.previous_page_number }}</a>
+            {%endif%}
+                <a class="page-link" href="?pg={{ user.number }}">{{ user.number }}</a>
+            {% if user.has_next %}
+                <a class="page-link" href="?pg={{ user.next_page_number}}">{{ user.next_page_number}}</a>
+            {%endif%}
+                <a class="page-link" href="?pg={{ user.paginator.num_pages }}">Next</a>
+        </section><br>
+        
+{% endblock %}

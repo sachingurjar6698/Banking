@@ -1,0 +1,33 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+
+    {% block  title %}
+    {% endblock title %}
+    <style>A {text-decoration: none;} </style>
+
+  </head>
+  <body> 
+    <header>
+      <nav>
+        <a href="{% url 'home'%}" class="text-decoration">Banking System</a>
+        <a href="{% url 'home'%}" class="text-decoration">Home</a>
+        <a href="{% url 'transfer'%}" class="text-decoration">View All Customers</a>
+        <a href="{% url 'all_transaction' %}" class="text-decoration">Transaction Details</a>
+      </nav>
+    </header>
+
+    {% block content %}
+    {%endblock content %} 
+    
+    <footer>
+		  <p>© Copyright 2021. All Rights Reserved.</p>
+	  </footer>
+  </body>
+</html>

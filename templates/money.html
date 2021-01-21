@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block  title %}
+    <title>Easy Bank | Money Transfer</title>
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h2 align="center">Customer Details</h2>
+    <table>
+      <tr background="black" color="white">
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Available Ballance</th>
+          <th>Email ID</th>
+          <th>Contact Number</th>
+      </tr>
+      <tr align="center">
+        <td>{{customer.id}}</td>
+        <td>{{customer.name}}</td>
+        <td>{{customer.current_credits}}</td>
+        <td>{{customer.mail_id}}</td>
+        <td>{{customer.Phone_num}}</td>
+      </tr>
+    </table>
+    <hr /><br><br><br>
+   <form action="transaction" method="POST">
+    {% csrf_token %}
+
+    <br><br>
+        <label>Select Customer To Transfer Money:</lable>
+        <select  required id="recipient" name="recipient">
+            <option required></option>
+            {% for user in users %}
+              {% if user.name != customer.name %}
+      		      <option>{{user.name}}</option>
+              {% endif %}
+            {% endfor %}
+      	</select><br><br>
+        <lable class="t-margin">Enter Amount To Transfer:</lable>
+        <input type="number" name="amount" id="amount" placeholder="Enter Amount" required><br>
+        <button type="submit" class="btn-size">Transfer Money</button><br><br>
+    </form>
+</div>
+{% endblock %}

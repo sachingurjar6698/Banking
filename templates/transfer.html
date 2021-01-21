@@ -1,0 +1,26 @@
+ {% extends 'base.html' %}
+ {% load static %}
+
+    {% block  title %}
+    <title>Easy Bank | Customers List</title>
+    {% endblock title %}
+ 
+{% block content %}
+<h2 align="center">Select And View One Customer</h2>
+<table>
+    <tr background="black" color="white">
+        <th>ID No.</th>
+        <th>Name</th>
+        <th>Available Ballance</th>
+        <th>Select Customer</th>
+    </tr>
+    {% for user in users %}
+    <tr align="center">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.current_credits}}</td>
+        <td><a href="{% url 'money' user.id %}"><button class="btn-style">Select</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+{%endblock content %} 

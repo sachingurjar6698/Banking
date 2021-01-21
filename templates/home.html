@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+{% block  title %}
+    <title>Easy Bank</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>Hello, welcome to the credit manager portal!</h1>
+    <h3>Transfer the credits of users from one to another in a simple way now!</h3>
+    <hr />
+    <a href="{% url 'transfer'%}"><button  class="button-decoration">View Customers List</button></a>
+
+   
+{%endblock content %} 
