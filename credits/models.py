@@ -19,3 +19,7 @@ class Record(models.Model):
     Transfer_Amount = models.IntegerField()
     Sender_Updated_Balance = models.IntegerField()
     Receiver_Updated_Balance = models.IntegerField()
+
+    def __str__(self):
+        return self.Name_Of_Sender + self.Name_Of_Receiver + str(self.Transfer_Amount) + str(self.Sender_Updated_Balance) + str(self.Receiver_Updated_Balance)
+    
